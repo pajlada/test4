@@ -57,7 +57,7 @@ jobs:
       - name: XD
         env:
           TEST: ${{ steps.upload_url.outputs.data }}
-          TEST2: ${{ steps.test.outputs.name }}
+          TEST2: ${{ steps.test.outputs.test }}
         run: |
             echo "$TEST"
             echo "$TEST2"
