@@ -1,13 +1,12 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  file:  # id of input
+    description: 'path of file to read'
     required: true
-    default: 'World'
 outputs:
-  upload_url:
-    description: 'Upload URL read from release-upload-url.txt'
+  data:
+    description: 'Data read from given path'
 runs:
   using: 'node12'
   main: 'index.js'
