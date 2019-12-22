@@ -52,12 +52,12 @@ jobs:
       - name: test
         id: test
         run: |
-            echo "::set-output name=test::lol"
+            echo "::set-output name=test::$(cat release-upload-url.txt/release-upload-url.txt)"
 
       - name: XD
         env:
           TEST: ${{ steps.upload_url.outputs.data }}
           TEST2: ${{ steps.test.outputs.test }}
         run: |
-            echo "$TEST"
-            echo "$TEST2"
+            echo "a: '$TEST'"
+            echo "b: '$TEST2'"
