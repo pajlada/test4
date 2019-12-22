@@ -1,0 +1,53 @@
+---
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create release (All platforms)
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: TEST Release ${{ github.ref }}
+          body: |
+              looool
+          draft: true
+          prerelease: true
+
+      - name: test
+        env:
+          CI_UPLOAD_URL: ${{ steps.create_release.outputs.upload_url }}
+        run: |
+            echo "$CI_UPLOAD_URL" > release-upload-url.txt
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: release-upload-url.txt
+          path: release-upload-url.txt
+
+  upload-release:
+    needs: create-release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v1
+        with:
+          name: release-upload-url.txt
+
+      - uses: ./.github/actions/read-upload-url
+        id: upload_url
+        with:
+          file: release-upload-url.txt
+
+      - name: XD
+        env:
+          TEST: ${{ steps.upload_url.outputs.data }}
+        run:
+          echo "$TEST"
