@@ -44,18 +44,20 @@ jobs:
         with:
           name: release-upload-url.txt
 
-      - name: XD
-        run: |
-          pwd
-          ls -la
-          ls -la release-upload-url.txt/
-
       - uses: ./.github/actions/read-upload-url
         id: upload_url
         with:
           file: release-upload-url.txt/release-upload-url.txt
 
+      - name: test
+        id: test
+        run: |
+            echo "::set-output name=test::lol"
+
       - name: XD
         env:
           TEST: ${{ steps.upload_url.outputs.data }}
-        run: echo "$TEST"
+          TEST2: ${{ steps.test.outputs.name }}
+        run: |
+            echo "$TEST"
+            echo "$TEST2"
