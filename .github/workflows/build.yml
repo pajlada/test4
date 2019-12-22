@@ -45,9 +45,8 @@ jobs:
           name: release-upload-url.txt
 
       - name: XD
-        run:
+        run: |
           ls -la
-          echo "$TEST"
 
       - uses: ./.github/actions/read-upload-url
         id: upload_url
@@ -57,5 +56,4 @@ jobs:
       - name: XD
         env:
           TEST: ${{ steps.upload_url.outputs.data }}
-        run:
-          echo "$TEST"
+        run: echo "$TEST"
