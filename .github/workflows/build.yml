@@ -43,6 +43,7 @@ jobs:
       - uses: actions/download-artifact@v1
         with:
           name: release-upload-url.txt
+          path: release-upload-url.txt
 
       - name: XD
         run: |
