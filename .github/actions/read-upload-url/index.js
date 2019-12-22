@@ -3,6 +3,7 @@ const fs = require('fs');
 
 try {
   const fileName = core.getInput('file');
+  console.log(process.cwd());
   console.log(`Trying ot read shit from file ${fileName}`);
   const data = fs.readFileSync(fileName);
   console.log(`Read data: ${data}`);
