@@ -46,6 +46,7 @@ jobs:
 
       - name: XD
         run: |
+          pwd
           ls -la
 
       - uses: ./.github/actions/read-upload-url
