@@ -20,8 +20,8 @@ jobs:
             Changes in this Release
             - First Change
             - Second Change
-          draft: true
-          prerelease: true
+          draft: false
+          prerelease: false
 
       - name: test
         env:
