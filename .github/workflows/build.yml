@@ -17,7 +17,9 @@ jobs:
           tag_name: nightly-tag
           release_name: NIGHTLY RELEASE
           body: |
-              looool
+            Changes in this Release
+            - First Change
+            - Second Change
           draft: true
           prerelease: true
 
@@ -60,4 +62,4 @@ jobs:
           TEST2: ${{ steps.test.outputs.test }}
         run: |
             echo "a: '$TEST'"
-            echo "b: '$TEST2'"
+            echo "b: '$TEST2' XD"
