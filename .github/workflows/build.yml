@@ -17,7 +17,7 @@ jobs:
           tag_name: nightly-tag
           release_name: NIGHTLY RELEASE
           body: |
-            Changes in this Release
+            Changes in this Release XD
             - First Change
             - Second Change
           draft: false
