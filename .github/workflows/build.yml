@@ -10,12 +10,12 @@ jobs:
     steps:
       - name: Create release (All platforms)
         id: create_release
-        uses: actions/create-release@v1
+        uses: pajlada/create-release@v2
         env:
-            # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: penis
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: nightly-tag
+          tag_name: nightly
+          backup_tag_name: nightly-backup
           release_name: NIGHTLY RELEASE
           body: |
             Changes in this Release XD
