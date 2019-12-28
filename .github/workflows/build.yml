@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Create release (All platforms)
         id: create_release
-        uses: pajlada/create-release@v2
+        uses: pajlada/create-release@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
