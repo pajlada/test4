@@ -12,7 +12,7 @@ jobs:
         id: create_release
         uses: pajlada/create-release@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKENPENIS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: nightly
           backup_tag_name: nightly-backup
