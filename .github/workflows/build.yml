@@ -21,6 +21,11 @@ jobs:
         run: |
             echo "XD"
 
+      - name: test3
+        run: |
+            echo "${{ github.event_name }}"
+            echo "${{ github.ref }}"
+
       - name: Create release (All platforms)
         id: create_release
         uses: pajlada/create-release@master
