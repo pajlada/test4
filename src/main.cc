@@ -1,6 +1,6 @@
 #include <iostream>
 
-// XD
+// XD2
 
 int
 main(int argc, char **argv)
