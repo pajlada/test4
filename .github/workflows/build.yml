@@ -26,7 +26,7 @@ jobs:
             echo "${{ github.event_name }}"
             echo "${{ github.ref }}"
             echo "$GITHUB_CONTEXT"
-            echo "asd 123477777a75aaaaaaaaa"
+            echo "asd 123477777a75aaaaaaaaaaaaaaa"
 
       - name: Create release (All platforms)
         id: create_release
