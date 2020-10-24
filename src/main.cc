@@ -5,7 +5,7 @@
 int
 main(int argc, char **argv)
 {
-    std::cout << "XD\n";
+    std::cout << "XD2\n";
 
     return 0;
 }
