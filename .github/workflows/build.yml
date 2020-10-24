@@ -25,7 +25,7 @@ jobs:
         run: |
             echo "${{ github.event_name }}"
             echo "${{ github.ref }}"
-            echo "${{ GITHUB_CONTEXT }}"
+            echo "$GITHUB_CONTEXT"
 
       - name: Create release (All platforms)
         id: create_release
