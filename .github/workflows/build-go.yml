@@ -49,6 +49,7 @@ jobs:
   create-release:
     needs: build
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
 
     steps:
       - uses: actions/download-artifact@v2
@@ -76,10 +77,15 @@ jobs:
             mv bins/windows/chatterino-api final-bins/chatterino-api-windows-x86_64.exe
             mv bins/macos/chatterino-api final-bins/chatterino-api-macos-x86_64
 
+      - name: build-changelog
+        run: sed "0,/## $(echo "$GITHUB_REF_VALUE" | cut -d '/' -f 3 | cut -c2-)/d" CHANGELOG.md | sed '/^## /,+999999999999999999 d' | tail -n+2 | head -n-1 > release-body
+        env:
+            GITHUB_REF_VALUE: ${{ github.ref }}
+
       - name: create release
         uses: softprops/action-gh-release@v1
         with:
-          name: test1
+          body_path: release-body
           files: |
             final-bins/chatterino-api-ubuntu-x86_64
             final-bins/chatterino-api-windows-x86_64.exe
