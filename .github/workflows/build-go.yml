@@ -84,4 +84,4 @@ jobs:
             final-bins/chatterino-api-windows-x86_64.exe
             final-bins/chatterino-api-macos-x86_64
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
