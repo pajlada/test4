@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Minor: Unreleased changesdfhksdf!
+- Minor: Unreleased change 2sdfjkhsdfkjsdf!
+- Minor: Unreleased change 3sdfkjhsdfkjhasdfkj!
+
 ## 0.0.4
 
 - Minor: Unreleased change!
