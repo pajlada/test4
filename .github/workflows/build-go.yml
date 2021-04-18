@@ -1,5 +1,5 @@
 ---
-name: Build
+name: Build GO
 
 on:
   push:
@@ -34,7 +34,7 @@ jobs:
           go get -v -t -d ./...
 
       - name: Build
-        run: go build -v
+        run: go build -ldflags="-s -w" -v -o build/chatterino-api
         working-directory: cmd/api
 
       - name: Test
@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: chatterino-api-${{ matrix.go }}-${{ matrix.os }}
-          path: cmd/api/api
+          path: build/chatterino-api
 
   create-release:
     needs: build
@@ -68,3 +68,21 @@ jobs:
 
       - name: display structure
         run: ls -lR
+
+      - name: rename files
+        run: |
+            mkdir final-bins
+            mv bins/ubuntu/chatterino-api final-bins/chatterino-api-ubuntu-x86_64
+            mv bins/windows/chatterino-api final-bins/chatterino-api-windows-x86_64.exe
+            mv bins/macos/chatterino-api final-bins/chatterino-api-macos-x86_64
+
+      - name: create release
+        uses: softprops/action-gh-release
+        with:
+          name: test1
+          files: |
+            final-bins/chatterino-api-ubuntu-x86_64
+            final-bins/chatterino-api-windows-x86_64.exe
+            final-bins/chatterino-api-macos-x86_64
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
