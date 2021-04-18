@@ -15,6 +15,7 @@ jobs:
     strategy:
       matrix:
         go: [1.15, 1.16]
+        os: [windows-latest, ubuntu-latest, macos-latest]
 
     steps:
       - name: Set up Go
@@ -40,5 +41,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: chatterino-api-${{ matrix.go }}
+          name: chatterino-api-${{ matrix.go }}-${{ matrix.os }}
           path: cmd/api/api
