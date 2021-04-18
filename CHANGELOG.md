@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.0.4
+
 - Minor: Unreleased change!
 - Minor: Unreleased change 2!
 - Minor: Unreleased change 3!
