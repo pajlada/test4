@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - 'v*'
   pull_request:
 
 jobs:
@@ -43,3 +45,26 @@ jobs:
         with:
           name: chatterino-api-${{ matrix.go }}-${{ matrix.os }}
           path: cmd/api/api
+
+  create-release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: chatterino-api-1.16-ubuntu-latest
+          path: bins/ubuntu/
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: chatterino-api-1.16-macos-latest
+          path: bins/macos/
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: chatterino-api-1.16-windows-latest
+          path: bins/windows/
+
+      - name: display structure
+        run: ls -lR
